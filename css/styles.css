@@ -1,0 +1,39 @@
+html,
+
+#map {
+  height: 710px;
+  width: 100%;
+  float: right;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+}
+
+input {
+  font-size: 12px;
+}
+
+h1 {
+  color: #525454;
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+#main_wrap {
+  width: 300px;
+  height: 700px;
+  position: fixed;
+  background-color: black;
+  float: left;
+  display: flex;
+}
