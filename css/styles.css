@@ -1,21 +1,11 @@
 html,
 
-#map {
-  height: 710px;
-  width: 100%;
-  float: right;
-}
 
 body {
   font-family: Arial, sans-serif;
   height: 100%;
   margin: 0;
   padding: 0;
-}
-
-.container {
-  height: 100%;
-  position: relative;
 }
 
 input {
@@ -29,11 +19,31 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: black;
+  font-size: 12px;
+}
+
+.map-container {
+  height: 100%;
+}
+
+.searchbar {
+    margin-bottom: 20px;
+}
+
 #main_wrap {
   width: 300px;
   height: 700px;
-  position: fixed;
-  background-color: black;
-  float: left;
+  padding-right: 2%;
+  padding-left: 2%;
+  background-color: green;
   display: flex;
+  float: left;
+}
+
+#map {
+  height: 700px;
+  padding-right: 2%;
+  padding-left: 2%;
 }

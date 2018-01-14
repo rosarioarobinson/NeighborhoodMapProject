@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Go-To Spots in Downtown D.C.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <div class="hamburger">
-      <div>
-    </div>
-    <div class="container">
-      <div class="options-box">
-        <h1>Go-To Spots in Downtown D.C.</h1>
-        <div class="row">
+</head>
 
-        <div id="main_wrap">
-          <ul data-bind="foreach: specificLocations">
-            <li><span data-bind="text: specificLocations"></span></li>
-          </ul>
-        </div>
-    <div id="map"></div>
 
-    <script src="js/knockout-3.4.2.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
+<body>
+
+    <script src="lib/knockout-3.4.2.js"></script>
+    <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="js/app.js"></script>
-    <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByTBE5aYWTTwfpg5F51Y8SuWqI7SSUntc&v=3&callback=initMap">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByTBE5aYWTTwfpg5F51Y8SuWqI7SSUntc&v=3&callback=initMap">
     </script>
 
-  </body>
+
+    <div class="hamburger"></div>
+
+    <div class="container">
+
+        <div class="options-box">
+            <h1>Go-To Spots in Downtown D.C.</h1>
+            <div class="row"></div>
+        </div>
+
+        <div id="main_wrap">
+            <ul data-bind="foreach: specificLocations">
+                <!--li><span data-bind="text: specificLocations"></span></li-->
+                <li class="specificLocations" data-bind="text: specificLocations, click: $parent.specificLocations, visible: specificLocations"></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="map"></div>
+
+
+
+
+
+</body>
+
 </html>

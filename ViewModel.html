@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go-To Spots in Downtown D.C.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+
+  <body>
+
+    <div>
+      <div class="list-menu">
+        <h2>Locations</h2>
+
+        <ul data-bind="foreach: locationList">
+            <li>
+                <span class="list-menu" data-bind="text: title" data-bind="text: addLocation"></span>
+            </li>
+        </ul>
+    </div>
+
+
+
+      <script src="lib/knockout-3.4.2.js"></script>
+      <script src="lib/jquery-3.2.1.min.js"></script>
+      <script src="js/ViewModel.js"></script>
+      <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByTBE5aYWTTwfpg5F51Y8SuWqI7SSUntc&v=3&callback=initMap">
+      </script>
+
+
+
+  </body>
+</html>
