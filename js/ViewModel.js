@@ -11,6 +11,16 @@ var Location = function(data) {
 var viewModel = function() {
     var self = this;
 
+    this.markers = ko.observableArray([]);
+
+    this.locationList = ko.observableArray([]);
+
+    this.foursquareApi = function() {
+      locations.forEach(function(location) {
+        self.locationList.push(new Location(location));
+      });
+    };
+
     var locations = ko.observableArray(
         [{
                 title: 'National Museum of African American History and Culture',
@@ -50,6 +60,6 @@ var viewModel = function() {
         ]);
 
 
-    var vm = new ViewModel();
+    //var vm = new ViewModel();
 
 };
