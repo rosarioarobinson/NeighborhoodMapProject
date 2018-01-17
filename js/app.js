@@ -1,45 +1,84 @@
-/*
+//Base code help provided by Udacity Javascript Design Patterns Course
+//Model
+//Locations array
+var initialLocations = [{
+        placename: 'National Museum of African American History and Culture',
+        location: {
+            lat: 38.891055,
+            lng: -77.032704
+        }
+    },
+    {
+        placename: 'International Spy Museum',
+        location: {
+            lat: 38.896945,
+            lng: -77.023617
+        }
+    },
+    {
+        placename: 'Founding Farmers',
+        location: {
+            lat: 38.900285,
+            lng: -77.044527
+        }
+    },
+    {
+        placename: 'JFK Center for Performing Arts',
+        location: {
+            lat: 38.891055,
+            lng: -77.032704
+        }
+    },
+    {
+        placename: 'Smithsonian National Air and Space Museum',
+        location: {
+            lat: 38.88816,
+            lng: -77.019868
+        }
+    },
+];
 
---------  Included in README file -------------
 
-Author: Rosario Robinson
-Date: December 2017
+var Location = function(data) {
+    this.clickLocation = ko.observable(data.clickLocation);
+    //this.name = ko.observable(data.name);
+    //this.name = ko.observable(data.name);
+    //this.imgSrc = ko.observable(data.imgSrc);
+    this.imgAttribution = ko.observable(data.imgAttribution);
+    //this.nicknames = ko.observableArray(data.nicknames);
+    this.placename = ko.observable(data.placename);
+    this.location = ko.observable(data.location);
+    this.showMarker = ko.observable(true);
+}
 
-Purpose: The purpose of this project is to display map with the following 3 features:
-1. Display Google map using Google API (key is included in html hard coded)
-2. Display list of locations/markers on the map on the left side of the map
-3. Display a search bar where a user would enter items from the list
+var ViewModel = function() {
 
-The two libraries used for this project:
-1. knockout
+    var self = this;
 
+    this.locationList = ko.observableArray([]);
 
-APIs used for the project for error handling:
-1. jQuery
+    initialLocations.forEach(function(locationItem) {
+        self.locationList.push(new Location(locationItem));
+    });
 
+    this.currentLocation = ko.observable(this.locationList()[0]);
 
-Must use the knockout.js library for the following:
-1. List:  Locations of markers displayed on the Google map)
-2. Filter: This is search filter that when user types in search field, results are filtered based on items in the list
-3. Tracking click events on the list items
+    this.incrementCounter = function() {
+        this.clickCount(this.clickCount() + 1);
+    };
 
+    this.setLocation = function(clickedLocation) {
+        console.log('haaay');
+        self.currentLocation(clickedLocation);
+    };
 
-Not handled by knockout
-1. Anything the Maps API is used for
-2. Creating markers
-3. Tracking click events on markers
-4. Making the map
-5. Refreshing the map
-
-Additional note:  Creating markers as part of viewModel and NOT create markers as knockout observables.
-
-*/
+    this.showLocation = function(clickedLocation) {
+        console.log('showLocation')
+        //self.currentLocation(clickedLocation)
+        google.maps.event.trigger(clickedLocation.showMarker, 'click');
+    }
 
 
-// Create ViewModel located in js/ViewModel.js
+};
 
-// Create Google map using API located in js/map.js -- initial markers placed
-
-// Create filtered list located in filteredlist.js
-
-// Display marker based on location selected
+ko.applyBindings(new ViewModel());

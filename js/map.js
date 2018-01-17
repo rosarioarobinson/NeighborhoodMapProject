@@ -30,35 +30,35 @@ function initMap() {
 
     //These are the locations of each go-to spot in Washington, D.C.
     var locations = [{
-            title: 'National Museum of African American History and Culture',
+            placename: 'National Museum of African American History and Culture',
             location: {
                 lat: 38.891055,
                 lng: -77.032704
             }
         },
         {
-            title: 'International Spy Museum',
+            placename: 'International Spy Museum',
             location: {
                 lat: 38.896945,
                 lng: -77.023617
             }
         },
         {
-            title: 'Founding Farmers',
+            placename: 'Founding Farmers',
             location: {
                 lat: 38.900285,
                 lng: -77.044527
             }
         },
         {
-            title: 'JFK Center for Performing Arts',
+            placename: 'JFK Center for Performing Arts',
             location: {
                 lat: 38.891055,
                 lng: -77.032704
             }
         },
         {
-            title: 'Smithsonian National Air and Space Museum',
+            placename: 'Smithsonian National Air and Space Museum',
             location: {
                 lat: 38.88816,
                 lng: -77.019868
@@ -72,12 +72,12 @@ function initMap() {
     //This for loop use the location array to create an array of markers on the map.
     for (var i = 0; i < locations.length; i++) {
         var position = locations[i].location;
-        var title = locations[i].title;
+        var placename = locations[i].placename;
         //Creating a marker per location for markers array.
         var marker = new google.maps.Marker({
             map: map,
             position: position,
-            title: title,
+            placename: placename,
             animation: google.maps.Animation.DROP,
             id: i
         });
@@ -105,7 +105,7 @@ function initMap() {
 
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + '<h4>' + marker.title + '</h4>'  +  marker.content + '</div>');
+          infowindow.setContent('<div>' + '<h4>' + marker.placename + '</h4>'  +  marker.content + '</div>');
           infowindow.open(map, marker);
 
           infowindow.addListener('closeclick', function() {
@@ -170,7 +170,7 @@ function initMap() {
                 data: 'client_id='+clientID+'&client_secret='+clientSECRET+'&v=20130815&ll='+item.latlng.lat+','+item.latlng.lng+'&query='+item.name,
                 success: function(data) {
 
-                            item.marker.title =  data.response.venues[0].name ;
+                            item.marker.placename =  data.response.venues[0].name ;
                             item.marker.content = ' Distance: '+ (data.response.venues[0].location.distance)/1000 + " km's" + '</br>' + '   CheckinCount: ' + data.response.venues[0].stats.checkinsCount;
                         }
 

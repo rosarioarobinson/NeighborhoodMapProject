@@ -1,74 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Go-To Spots in Downtown D.C.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-To Places in Washington D.C.</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="js/lib/bootstrap.min.css">
 </head>
-
 
 <body>
 
-    <script src="js/lib/knockout-3.4.2.js"></script>
+
+    <h1>Downtown Washington, D.C.</h1>
+
+    <div class="searchbar">
+        <!--h2>Search Downtown DC</h2-->
+        <span class="filter-search">Search Downtown DC:</span>
+        <input class="search-box" type="search" placeholder="Ex: African American Museum">
+        <div class="row"></div>
+    </div>
+
+    <div>
+        <div>
+            <ul data-bind="foreach: locationList">
+                <!--li data-bind="text: placename, click: $parent.setLocation"></li-->
+                <li data-bind="text: placename, click: $parent.showLocation, visible: showMarker"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div data-bind="with:currentLocation">
+        <div>
+            <!--h2 data-bind="text: placename"></h2-->
+        </div>
+    </div>
+
     <script src="js/lib/jquery-3.2.1.min.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/filteredlist.js"></script>
-    <script src="js/ViewModel.js"></script>
+    <script src="js/lib/knockout-3.4.2.js"></script>
     <script src="js/app.js"></script>
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByTBE5aYWTTwfpg5F51Y8SuWqI7SSUntc&v=3&callback=initMap">
     </script>
+    <script src="js/map.js"></script>
 
-
-    <div class="hamburger">
-      <!-- For mobile responsive -->
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="container">
-
-        <!-- Page Title >> div A = Title -->
-
-        <div class="options-box">
-          <h1>Go-To Spots in Downtown D.C.</h1>
-          <div class="row"></div>
-        </div>
-
-        <!-- Search box above the list filters locations in the list.  -->
-        <!-- div B = Search bar and Left filtered list  -->
-        <div class="searchbar">
-          <!--h2>Search Downtown DC</h2-->
-          <span class="filter-search">Search Downtown DC:</span>
-    		  <input id="search-text" class="search-box" type="text" placeholder="Ex: African American Museum">
-          <div class="row"></div>
-        </div>
-
-
-        <!-- Error message handling.  -->
-
-
-        <!-- Left list of locations when I click then it displays marker on map.  -->
-        <div id="main_wrap">
-            <!--ul data-bind="foreach: locations">
-                <li class="list-item" data-bind="text: marker.location"></li>
-            </ul-->
-            <tr>
-              <td class="list-item" data-bind="text: marker.lcoation"></td>
-            </tr>
-        </div>
-
-    </div>
-
-    <!-- Display map 1) markers of all locations and 2) markers from when I click on location from left list.  -->
-    <div id="map"></div>
-
-
-
+    <div id="map" class="map-container"></div>
 
 
 </body>
+
 
 </html>
