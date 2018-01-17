@@ -26,19 +26,45 @@ h2 {
   font-size: 12px;
 }
 
-.main-container {
-  height: 100%;
+ul{
+  list-style-type: none;
+  padding-left: 2%;
+  font-size: 80%;
+  width: 30%;
+  background-color: azure;
+  font-color: white;
+}
+
+li{
+  padding: 2px;
+  border-bottom: solid black 1px;
+}
+
+
+.searchbar {
+  width: 30%;
+  font-size: 80%;
+  padding-left: 2%;
+  display: table;
 }
 
 .list-container {
-  width: 180px;
+  width: 100%;
+  position: relative;
+
 }
 
 .list-item {
-  font-size: 20px;
+  font-size: 12px;
   font-color: white;
-  width: 180px;
+  width: 100px;
+  display: table;
   text-align: left;
+}
+
+.list-item-content {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .map-container {
@@ -57,19 +83,30 @@ h2 {
   background-color: white;
 }
 
-#main_wrap {
-  width: 150px;
-  height: 700px;
-  padding-right: 2%;
-  padding-left: 2%;
-  background-color: black;
-  display: flex;
-  float: left;
-  font-color: white;
+#map {
+  height: 100%;
+  width: 850px;
+  float: right;
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
-#map {
-  height: 700px;
-  padding-right: 2%;
-  padding-left: 2%;
+
+@media only screen and (max-width:620px) {
+  nav li{
+    width: 100%;
+  }
+  .list-counter{
+    height: 0;
+    overflow: auto;
+  }
+  .hamburger{
+    display: inline;
+  }
+  .open{
+    height: 100%;
+  }
+  .map{
+    display: inline;
+  }
 }
