@@ -38,6 +38,7 @@ var initialLocations = [{
     },
 ];
 
+var currentMarkers = [];
 
 var Location = function(data) {
     this.clickLocation = ko.observable(data.clickLocation);
@@ -49,11 +50,44 @@ var Location = function(data) {
     this.placename = ko.observable(data.placename);
     this.location = ko.observable(data.location);
     this.showMarker = ko.observable(true);
-}
+    //this.noMapErrorMessage = ko.observable(false);
+};
 
+//ViewModel
 var ViewModel = function() {
 
     var self = this;
+
+    this.initialLocations = ko.observableArray(initialLocations);
+
+    //query: ko.observable('');
+    //this.query = ko.observable('');
+
+    this.filter = ko.observable();
+
+    this.places = ko.observableArray([{
+            placename: 'National Museum of African American History and Culture',
+        },
+        {
+            placename: 'International Spy Museum',
+        },
+        {
+            placename: 'Founding Farmers',
+        },
+        {
+            placename: 'JFK Center for Performing Arts',
+        },
+        {
+            placename: 'Smithsonian National Air and Space Museum',
+        },
+    ]);
+
+    this.visiblePlaces = ko.computed(function() {
+        return this.places().filter(function(place) {
+            if (!self.filter() || place.name.toLowerCase().indexOf(self.filter().toLowerCase()) !== -1)
+                return place;
+        });
+    }, this);
 
     this.locationList = ko.observableArray([]);
 
@@ -67,18 +101,26 @@ var ViewModel = function() {
         this.clickCount(this.clickCount() + 1);
     };
 
-    this.setLocation = function(clickedLocation) {
-        console.log('haaay');
-        self.currentLocation(clickedLocation);
+    this.setLocation = function(clickLocation) {
+        console.log('hi');
+        self.currentLocation(clickLocation);
     };
 
-    this.showLocation = function(clickedLocation) {
-        console.log('showLocation')
+    this.showLocation = function(clickLocation) {
+        console.log('showLocation');
         //self.currentLocation(clickedLocation)
-        google.maps.event.trigger(clickedLocation.showMarker, 'click');
-    }
+        google.maps.event.trigger(clickLocation.showMarker, 'click');
+    };
+
 
 
 };
 
+
 ko.applyBindings(new ViewModel());
+
+//ViewModel.query.subscribe(ViewModel.search);
+
+$('.hamburger').click(function() {
+    $('.container').toggleClass('open');
+});
