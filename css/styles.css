@@ -28,11 +28,11 @@ h2 {
 
 ul{
   list-style-type: none;
-  padding-left: 2%;
+  padding-left: 2px;
   font-size: 80%;
-  width: 30%;
+  width: 32%;
   background-color: azure;
-  font-color: white;
+  font-color: #59606b;
   float: left;
   height: 84%;
 }
@@ -40,64 +40,57 @@ ul{
 li{
   padding: 2px;
   border-bottom: solid black 1px;
+
 }
 
 .container {
-    height: 40%;
+    height: 100%;
     position: relative;
 
 }
 
 .map-container {
-  bottom:0px;
-  height: 85%;
-  left: 362px;
-  position: absolute;
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
   overflow: hidden;
-  right: 0px;
-  padding: 5px;
-
 }
 
 .hamburger{
-  background:none;
-  position:absolute;
-  top:0;
-  right:0;
-  line-height:45px;
-  padding:5px 15px 0px 15px;
-  color:#a4a8c5;
-  border:0;
-  font-size:1.4em;
-  font-weight:bold;
-  cursor:pointer;
-  outline:none;
-  z-index:10000000000000;
+  cursor: pointer;
+  padding: 15px;
+  display: none;
+  float: right;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .searchbar {
   width: 30%;
   font-size: 80%;
-  padding-left: 2%;
+  padding-left: 2px;
   display: table;
 }
 
 
 
 .search-box {
-  width: 180px;
+  width: 300px;
   margin-bottom: 14px;
   background-color: white;
+  font-size: 80%;
 }
 
 
-@media only screen and (max-width:800px) {
-   li{
-    width: 100%;
-  }
+@media only screen and (max-width:100%) {
+  [class*="col-"] {
+       width: 100%;
+   }
   .hamburger{
     display: inline;
   }
-
-
 }

@@ -34,6 +34,6 @@ Used the knockout.js library for the following:
 
 ### Installation
 1. Clone files onto your local.
-2. When you have the files, open in your personal browser.
+2. When you have the files, open the index.html in your personal browser.
 3. When opened, see list of markers and locations available.
 4. The app is mobile responsive as well.
